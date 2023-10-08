@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block metadescription %}
+    {% if category %}
+        {{ category.description|truncatewords:155 }}
+    {% else %}
+    Welcome to Noting where you can purchace everything
+    {%endif%}
+{%endblock%}
+{% block title %}
+    {% if category %}
+        {{ category.name }} - nothing.
+    {% else %}
+        See our new collections -nothing.
+    {%endif%}
+{% endblock %}
+{% block content %}
+    {% if category %}
+    <div>
+        <div>
+            <p><a href="{% url 'shop:allCat' %}">Our Categories</a></p>
+        </div>
+    </div>
+    {%endif%}
+    <div>
+        {% if category %}
+            <img src="{{category.image.url}}" class="col-12 p-0" alt="{{category.name}}">
+    </div>
+    <br>
+    <div>
+        <h1>{{category.name}}</h1>
+        <p>{{category.description}}</p>
+    </div>
+        {%else%}
+    <div>
+        <img src="{% static 'image/poster.png' %}" class="col-12 p-0" alt="Our Products">
+    </div>
+    <br>
+    <div>
+        <h1>Our Collections</h1>
+        <p>more about this......................</p>
+    </div>
+    {%endif%}
+    <div>
+        <div>
+            {% for product in products %}
+            <div>
+                <a href=""><img src="{{product.image.url}}" width="200px" alt="{{i.name}}"></a>
+                <div>
+                    <h4>{{product.name}}</h4>
+                    <p>{{product.price}}</p>
+                </div>
+            </div>
+            {%endfor%}
+        </div>
+    </div>
+{%endblock%}

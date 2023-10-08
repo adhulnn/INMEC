@@ -1,0 +1,18 @@
+<nav>
+    <ul>
+        <li><a href="{% url 'shop:allCat' %}">All Products</a></li>
+        {% for i in links %}
+            <li><a href="{{i.get_url}}">{{i.name}}</a></li>
+        {%endfor%}
+        <li>Your Cart()</li>
+    </ul>
+</nav>
+<style>
+    a{
+        color: black;
+    }
+    a:hover{
+        text-decoration: none;
+        color: rgb(75, 75, 75);
+    }
+  </style>
