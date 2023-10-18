@@ -45,7 +45,7 @@
         <div>
             {% for product in products %}
             <div>
-                <a href=""><img src="{{product.image.url}}" width="200px" alt="{{i.name}}"></a>
+                <a href="{{product.get_url}}"><img src="{{product.image.url}}" width="200px" alt="{{i.name}}"></a>
                 <div>
                     <h4>{{product.name}}</h4>
                     <p>{{product.price}}</p>
