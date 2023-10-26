@@ -1,0 +1,29 @@
+
+.cat-det h1{
+    text-align: center;
+}
+.cat-det p,
+.cat-det h1{
+    font-family: 'Sometype Mono', monospace;
+
+}
+
+
+/* navbar */
+.navbar-nav a{
+    color: black;
+    font-family: 'Courier New', Courier, monospace;
+}
+.navbar-nav a:hover{
+    /* text-decoration: none; */
+    color: rgb(0, 0, 0);
+}
+
+.navbar .logo{
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+}
+
+/* ----------------------------------- */
+

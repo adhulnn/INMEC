@@ -1,22 +1,15 @@
-<!-- <nav>
-    <ul>
-        <li><a href="{% url 'shop:allCat' %}">All Products</a></li>
-        {% for i in links %}
-            <li><a href="{{i.get_url}}">{{i.name}}</a></li>
-        {%endfor%}
-        <li>Your Cart()</li>
-    </ul>
-</nav> -->
+{% load static %}
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="{% url 'shop:allCat' %}">Your Logo/Brand</a>
+    <a class="navbar-brand" href="{% url 'shop:allCat' %}"><b>EleKtronics</b></a>
+    <!-- <a class="navbar-brand" href="{% url 'shop:allCat' %}"><img class="logo" src="{% static 'image/logo.png' %}" alt="logo"></a> -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item active">
-                <a class="nav-link" href="{% url 'shop:allCat' %}">All Products</a>
+                <a class="nav-link" href="{% url 'shop:allCat' %}">Home</a>
             </li>
             {% url 'shop:allCat' as allCatURL %}
             <li class="nav-item dropdown {% if request.path == allCatURL or 'shop' in request.path %}active{% endif %}">
@@ -29,24 +22,19 @@
                     {% endfor %}
                 </div>
             </li>
+            {% if item_count > 0 %}
             <li class="nav-item">
-                <a class="nav-link" href="#">Your Cart()</a>
+                <a class="nav-link" href="{% url 'cart:cart_detail' %}"><i class="bi bi-cart-fill"></i>({{item_count}})</a>
             </li>
+            {%endif%}
         </ul>
         <!-- Search bar on the right side -->
-        <form class="form-inline my-2 my-lg-0 ml-auto">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        <form class="form-inline my-2 my-lg-0 ml-auto" method="get" action="{% url 'search_app:searchResult' %}">
+            {% csrf_token %}
+            <label class="sr-only" for="searchInput">Search</label>
+            <input class="form-control mr-sm-2" type="search" id="searchInput" name="q" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" name="submit"><i class="bi bi-search"></i></button>
         </form>
+        
     </div>
 </nav>
-
-<style>
-    a{
-        color: black;
-    }
-    a:hover{
-        text-decoration: none;
-        color: rgb(75, 75, 75);
-    }
-  </style>

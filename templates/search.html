@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block metadescription %}
+    search results
+{% endblock %}
+{% block title %}
+    Search
+{% endblock %}
+{% block content %}
+<div class="container my-4">
+    <h1>Search Results</h1>
+    {% if query %}
+        <p>Showing results for: "{{ query }}"</p>
+    {% endif %}
+    <div class="row">
+        {% for result in products %}
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                <div class="card h-100">
+                    <a href="{{ result.get_url }}">
+                        <img src="{{ result.image.url }}" class="card-img-top" style="max-height: 300px;" alt="{{ result.name }}">
+                    </a>
+                    <div class="card-body">
+                        <h4 class="card-title">{{ result.name }}</h4>
+                        <p class="card-text">{{ result.price }}</p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        {% if products|length == 0 %}
+        <div class="col-12 text-center">
+            <p>No results found.</p>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
