@@ -26,6 +26,10 @@
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'cart:cart_detail' %}"><i class="bi bi-cart-fill"></i>({{item_count}})</a>
             </li>
+            {%else%}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'cart:cart_detail' %}"><i class="bi bi-cart-fill"></i>(0)</a>
+            </li>
             {%endif%}
         </ul>
         <!-- Search bar on the right side -->
