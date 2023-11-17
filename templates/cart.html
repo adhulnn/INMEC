@@ -71,7 +71,7 @@
                 <div class="text-center">
                     <h1 class="text-center">Your cart is empty.</h1>
                     <p class="text-center">
-                        Click <a href="">Here</a> to Continue Shopping
+                        Click <a href="{% url 'shop:allCat' %}">Here</a> to Continue Shopping
                     </p>
                 </div>
             {% endif %}
@@ -96,7 +96,7 @@
                 <p>Please review your shopping cart items before proceeding with the payment</p>
                 <!-- Additional Checkout-related content or form can be added here -->
                 <button class="btn btn-primary btn-lg">Payment Options</button>
-                <button class="btn btn-outline-primary btn-lg">Continue Shopping</button>
+                <a href="{% url 'shop:allCat' %}" class="btn btn-outline-primary btn-lg">Continue Shopping</a>
             </div>
         </div>
     </div>
